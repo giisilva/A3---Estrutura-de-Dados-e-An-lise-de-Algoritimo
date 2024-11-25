@@ -64,13 +64,69 @@ public class ListaPet {
     
         atual.setNextNode(newNode); // O nó atual aponta para o novo nó
 
-    // Se o nó atual for o último nó, atualiza o último nó
-    if (atual == lastNode) {
-        lastNode = newNode;
+        // Se o nó atual for o último nó, atualiza o último nó
+        if (atual == lastNode) {
+            lastNode = newNode;
+        }
+
+        return true; // Retorna true indicando que a inserção foi bem-sucedida
     }
 
-    return true; // Retorna true indicando que a inserção foi bem-sucedida
-}
+    public void removeStart() {
+        if(firstNode == null){
+            System.out.println("A lista está vazia");
+            return;
+        }
+
+        if (firstNode == lastNode){
+            firstNode = lastNode = null;
+        }else{
+            firstNode = firstNode.getNextNode();
+            firstNode.setPrevNode(null);
+        }
+
+    }
+
+    public void removeEnd() {
+        if(lastNode == null){
+            System.out.println("A lista está vazia");
+            return;
+        }
+
+        if (firstNode == lastNode){
+            firstNode = lastNode = null;
+        }else{
+            lastNode = lastNode.getPrevNode();
+            lastNode.setNextNode(null);
+        }
+
+
+    }
+
+    public boolean removeMiddle(String key) {
+        Node atual = firstNode;
+
+        while(atual != null && !atual.getData().equals(key)){
+            atual = atual.getNextNode();
+        }
+
+        if(atual==null){
+            System.out.println("Dado não encontrado");
+            return false;
+        }
+
+        if(atual==firstNode){
+            removeStart();
+        }else if(atual == lastNode){
+            removeEnd();
+        }else{
+            atual.getPrevNode().setNextNode(atual.getNextNode());
+            atual.getNextNode().setPrevNode(atual.getPrevNode());
+        }
+        
+        return true;
+
+    }
 
     public void printLista() {
         System.out.println("Lista: " + nome);

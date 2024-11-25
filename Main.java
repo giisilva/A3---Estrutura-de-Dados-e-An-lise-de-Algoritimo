@@ -4,16 +4,24 @@ public class Main {
     public static void main(String[] args) {
         ListaPet lista = new ListaPet("Pets");
         lista.addStart("Milly");
-        lista.addStart("Nila");
         lista.addEnd("Pandora");
+        lista.addStart("Nila");
         lista.addEnd("Zorro");
-        lista.addStart("Maxwell");
-        lista.addMiddle("Milly", "Nick");
-        lista.addMiddle("Zorro", "Kiara");
-
+        //lista.addStart("Maxwell");
+        System.out.println("lista na ordem: ");
         lista.printLista();
 
-        Fila fila = new Fila();
+        lista.removeStart();
+        lista.removeEnd();
+
+        System.out.println("lista na ordem: ");
+        lista.printLista();
+       // lista.addMiddle("Milly", "Nick");
+        //lista.addMiddle("Zorro", "Kiara");
+
+        //lista.printLista();
+
+        /*Fila fila = new Fila();
         fila.addFila("Vanessa");
         fila.addFila("Fernando");
         fila.addFila("Trinity");
@@ -23,6 +31,6 @@ public class Main {
 
         while(!fila.isEmpty()){
             System.out.println("Removendo:" + fila.removeFila());
-        }
+        }*/
     }
 }
