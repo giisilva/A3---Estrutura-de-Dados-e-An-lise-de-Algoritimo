@@ -3,8 +3,6 @@ package ListaDupLigada;
 public class ListaPet {
     private Node firstNode;
     private Node lastNode;
-    private Node nextNode;
-    private Node prevNode;
     private String nome;
     
     public ListaPet(){
@@ -20,11 +18,11 @@ public class ListaPet {
         Node newNode = new Node(nomePet);
 
         if (firstNode == null) {
-            firstNode = lastNode = newNode; // Se a lista está vazia, o novo nó se torna o head
+            firstNode = lastNode = newNode; // Se a lista está vazia, ambos os nós recebem novo nó
         } else {
-            firstNode.prevNode = newNode; // Conecta o primeiro nó ao novo nó
-            newNode.nextNode = firstNode; // Conecta o novo nó ao antigo primeiro nó
-            firstNode = newNode;         // Atualiza o último nó
+            newNode.setNextNode(firstNode); // o próximo nó se conecta ao que era o primeiro nó
+            firstNode.setPrevNode(newNode); // o antigo primeiro nó aponta para o novo nó como anterior
+            firstNode = newNode;         // Atualiza o primeiro nó
         }
 
     }
@@ -32,10 +30,10 @@ public class ListaPet {
         Node newNode = new Node(nomePet);
     
         if (firstNode == null) {
-            firstNode = lastNode = newNode; // Se a lista está vazia, o novo nó se torna o head
+            firstNode = lastNode = newNode; // Se a lista está vazia, ambos os nós recebem novo nó
         } else {
-            lastNode.prevNode = newNode; // Conecta o último nó ao novo nó
-            newNode.nextNode = lastNode; // Conecta o novo nó ao antigo último nó
+            newNode.setPrevNode(lastNode); // Conecta o último nó ao novo nó
+            lastNode.setNextNode(newNode); // Conecta o novo nó ao antigo último nó
             lastNode = newNode;         // Atualiza o último nó
         }
     }
@@ -49,10 +47,9 @@ public class ListaPet {
             
         while (atual.getData()!=key) {
             atual = atual.getNextNode();
-        }
-
-        if (atual == null){
+            if (atual == null){
             return false;
+            }
         }
 
         Node newNode = new Node(nomePet);
@@ -76,6 +73,7 @@ public class ListaPet {
 }
 
     public void printLista() {
+        System.out.println("Lista: " + nome);
         if (firstNode == null) {
             System.out.println("A lista está vazia.");
             return; // Não tenta percorrer a lista se estiver vazia
@@ -84,12 +82,9 @@ public class ListaPet {
         Node atual = firstNode;
         while (atual != null) {
             System.out.println("Nó: " + atual.getData());
+            System.out.println("Primeiro nó: " + firstNode.getData());
+            System.out.println("último nó: " + lastNode.getData());
             atual = atual.getNextNode();
         }
     }
-        /*verificar os nós
-        System.out.println("Primeiro nó: " + firstNode.getData());
-        System.out.println("último nó: " + lastNode.getData());
-        System.out.println("próximo nó: " + nextNode.getData());
-        System.out.println("nó anterior " + prevNode.getData());*/
 }    
