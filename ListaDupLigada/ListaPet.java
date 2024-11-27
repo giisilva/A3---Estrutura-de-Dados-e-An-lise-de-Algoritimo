@@ -14,8 +14,8 @@ public class ListaPet {
         firstNode = lastNode = null;
     }
     
-    public void addStart(String nomePet) {
-        Node newNode = new Node(nomePet);
+    public void addStart(String nomePet, int idadePet, String especiePet, String racaPet, String perfilPet, String statusPet) {
+        Node newNode = new Node(nomePet, idadePet, especiePet, racaPet, perfilPet, statusPet);
 
         if (firstNode == null) {
             firstNode = lastNode = newNode; // Se a lista está vazia, ambos os nós recebem novo nó
@@ -26,8 +26,8 @@ public class ListaPet {
         }
 
     }
-    public void addEnd(String nomePet) {
-        Node newNode = new Node(nomePet);
+    public void addEnd(String nomePet, int idadePet, String especiePet, String racaPet, String perfilPet, String statusPet) {
+        Node newNode = new Node(nomePet, idadePet, especiePet, racaPet, perfilPet, statusPet);
     
         if (firstNode == null) {
             firstNode = lastNode = newNode; // Se a lista está vazia, ambos os nós recebem novo nó
@@ -38,21 +38,21 @@ public class ListaPet {
         }
     }
 
-    public boolean addMiddle(String key, String nomePet) {
+    public boolean addMiddle(String key, String nomePet, int idadePet, String especiePet, String racaPet, String perfilTextPet, String statusPet) {
         Node atual = firstNode;
 
         if (atual == null) {
             return false;
         }
             
-        while (atual.getData()!=key) {
+        while (atual.getNome()!=key) {
             atual = atual.getNextNode();
             if (atual == null){
             return false;
             }
         }
 
-        Node newNode = new Node(nomePet);
+        Node newNode = new Node(nomePet, idadePet, especiePet, racaPet, perfilTextPet, statusPet);
 
         // Insere o novo nó entre o nó atual e o próximo nó
         newNode.setPrevNode(atual);
@@ -106,7 +106,7 @@ public class ListaPet {
     public boolean removeMiddle(String key) {
         Node atual = firstNode;
 
-        while(atual != null && !atual.getData().equals(key)){
+        while(atual != null && !atual.getNome().equals(key)){
             atual = atual.getNextNode();
         }
 
@@ -137,9 +137,9 @@ public class ListaPet {
 
         Node atual = firstNode;
         while (atual != null) {
-            System.out.println("Nó: " + atual.getData());
-            System.out.println("Primeiro nó: " + firstNode.getData());
-            System.out.println("último nó: " + lastNode.getData());
+            System.out.println("pet: " + atual.getNome() + ", " + atual.getIdade() + ", " + atual.getEspecie() + ", " + atual.getRaca() + ", " + atual.getPerfil() + ", " + atual.getStatus());
+            //System.out.println("Primeiro nó: " + firstNode.getData());
+            //System.out.println("último nó: " + lastNode.getData());
             atual = atual.getNextNode();
         }
     }

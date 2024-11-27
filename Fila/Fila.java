@@ -1,5 +1,4 @@
 package Fila;
-
 public class Fila {
     private Node inicio, fim;
     int tam;
@@ -13,8 +12,8 @@ public class Fila {
         return (inicio == null);
     }
 
-    public void addFila(String nomePessoa){
-        Node newNode = new Node(nomePessoa);
+    public void addFila(String nomePessoa, String emailPessoa, String senhaPessoa, String telefonePessoa, String enderecoPessoa){
+        Node newNode = new Node(nomePessoa, emailPessoa, senhaPessoa, telefonePessoa, enderecoPessoa);
 
         if(isEmpty()){
             inicio = fim= newNode;
@@ -29,13 +28,13 @@ public class Fila {
         if(isEmpty()){
             return null;
         }
-        String nomeRemovido = inicio.Dado;
+        String pessoaRemovido = inicio.nome;
         inicio = inicio.next;
         if(inicio == null){
             fim= null;
         }
         tam--;
-        return nomeRemovido;
+        return pessoaRemovido;
     }
 
     public int tamanho(){
@@ -48,7 +47,7 @@ public class Fila {
         }else{
             Node atual = inicio;
             while (atual!=null){
-                System.out.println(atual.Dado + " ");
+                System.out.println("pessoa: " + atual.nome + ", " + atual.email + ", " + atual.senha + ", " + atual.telefone + ", " + atual.endereco);
                 atual = atual.next;
             }
             System.out.println();

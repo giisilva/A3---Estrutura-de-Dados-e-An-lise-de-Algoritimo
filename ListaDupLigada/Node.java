@@ -1,17 +1,32 @@
 package ListaDupLigada;
 public class Node {
-    public String Dado;
-    public Node nextNode;
-    public Node prevNode;
+    private String nome;
+    private int idade;
+    private String especie;
+    private String raca;
+    private String perfil;
+    private String status;
+    private Node nextNode;
+    private Node prevNode;
     
-    public Node(String nomePet){
-        this.Dado = nomePet;
+    public Node(String nomePet, int idadePet, String especiePet, String racaPet, String perfilPet, String statusPet){
+        this.nome = nomePet;
+        this.idade = idadePet;
+        this.especie = especiePet;
+        this.raca = racaPet;
+        this.perfil = perfilPet;
+        this.status = statusPet;
         nextNode = null;
         prevNode = null;
     }
     
-    public Node(String Dado, Node no){
-        this.Dado = Dado;
+    public Node(String nome, int idade, String especie, String raca, String perfil, String status, Node no){
+        this.nome = nome;
+        this.idade = idade;
+        this.especie = especie;
+        this.raca = raca;
+        this.perfil = perfil;
+        this.status = status;
         this.nextNode = no;
         this.prevNode = no;
     }
@@ -32,11 +47,53 @@ public class Node {
         this.prevNode = prevNode;
     }
     
-    public String getData(){
-        return Dado;
+    public String getNome(){
+        return nome;
     }
     
-    public void setData(String Dado){
-        this.Dado = Dado;
+    public void setNome(String nome){
+        this.nome = nome;
     }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    
 }
