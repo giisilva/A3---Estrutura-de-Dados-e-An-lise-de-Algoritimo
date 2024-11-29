@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Pets</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-purple: #6a1b9a;
+      --main-green: #66bb6a;
+      --light-gray: #f9f9f9;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-gray);
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: var(--main-purple);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: #fff !important;
+    }
+    .nav-link {
+      color: #fff !important;
+      margin-right: 15px;
+    }
+    .nav-icon {
+      font-size: 1.8rem;
+      color: #fff !important;
+      transition: transform 0.3s ease;
+    }
+    .nav-icon:hover {
+      transform: scale(1.1);
+    }
+    .dropdown-menu {
+      background: var(--light-gray);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-item {
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      background-color: var(--main-purple);
+      color: white;
+    }
+    .hero-section {
+      background: linear-gradient(45deg, var(--main-purple), var(--main-green));
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      border-radius: 0 0 50px 50px;
+    }
+    .hero-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+    .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .btn-primary {
+      background-color: var(--main-purple);
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #500b6b;
+    }
+    .btn-success {
+      background-color: var(--main-green);
+      border: none;
+    }
+    .btn-success:hover {
+      background-color: #4a8a4f;
+    }
+    footer {
+      background-color: var(--main-purple);
+      color: #fff;
+      padding: 30px 20px;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: var(--main-green);
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px; /* Adicionando o espaçamento */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="Index ong.html">PetMatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="Cadastrar Pet.html">Cadastrar Pets</a>
+          </li>
+          <!-- Dropdown Perfil -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle nav-icon"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets Cadastrados</a></li>
+              <li><a class="dropdown-item" href="Atualizar Perfil.html">Atualizar Perfil</a></li>
+              <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Cadastro de Pet</h1>
+    <p>Preencha as informações abaixo para cadastrar um novo pet.</p>
+  </div>
+
+  <!-- Formulario de Cadastro -->
+  <div class="container my-5">
+    <div class="form-container">
+      <form action="#" method="POST">
+        <div class="mb-3">
+          <label for="petName" class="form-label">Nome do Pet</label>
+          <input type="text" class="form-control" id="petName" required>
+        </div>
+        <div class="mb-3">
+          <label for="petType" class="form-label">Tipo de Animal</label>
+          <select class="form-select" id="petType" required>
+            <option value="" disabled selected>Selecione o tipo</option>
+            <option value="dog">Cachorro</option>
+            <option value="cat">Gato</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+        <div class="mb-3" id="otherTypeContainer" style="display:none;">
+          <label for="otherType" class="form-label">Qual Tipo de Animal?</label>
+          <input type="text" class="form-control" id="otherType">
+        </div>
+        <div class="mb-3">
+          <label for="petDescription" class="form-label">Descrição</label>
+          <textarea class="form-control" id="petDescription" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="petImage" class="form-label">Imagem do Pet</label>
+          <input type="file" class="form-control" id="petImage" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Cadastrar Pet</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p class="mb-2">© 2024 PetMatch. Todos os direitos reservados.</p>
+      <div class="social-icons">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script para mostrar o campo "Outro" -->
+  <script>
+    document.getElementById('petType').addEventListener('change', function () {
+      var otherTypeContainer = document.getElementById('otherTypeContainer');
+      if (this.value === 'other') {
+        otherTypeContainer.style.display = 'block';
+      } else {
+        otherTypeContainer.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
