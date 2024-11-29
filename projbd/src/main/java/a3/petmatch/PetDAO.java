@@ -9,7 +9,7 @@ import java.util.List;
 public class PetDAO {
     // Método para salvar um pet no banco de dados
     public void salvar(Pet pet) {
-        String sql = "INSERT INTO pets (nome, idade, especie, raca, perfil, status, id_ong) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pets (nome, idade, especie, raca, perfil, status, id_ong, foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, pet.getNome());
@@ -19,6 +19,7 @@ public class PetDAO {
             stmt.setString(5, pet.getPerfil());
             stmt.setString(6, pet.getStatus());
             stmt.setInt(7, pet.getIdOng());
+            stmt.setBytes(8, pet.getFoto()); // Adiciona a foto como array de bytes
             stmt.executeUpdate();
             System.out.println("Pet salvo com sucesso!");
         } catch (Exception e) {
@@ -42,7 +43,8 @@ public class PetDAO {
                     rs.getString("raca"),
                     rs.getString("perfil"),
                     rs.getString("status"),
-                    rs.getInt("id_ong")
+                    rs.getInt("id_ong"),
+                    rs.getBytes("foto") 
                 );
                 pets.add(pet);
             }

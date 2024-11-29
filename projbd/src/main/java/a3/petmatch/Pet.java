@@ -8,9 +8,10 @@ public class Pet {
     private String raca;
     private String perfil;
     private String status;
-    private int idOng; // ID da ONG que cadastrou o pet
+    private int idOng; 
+    private byte[] foto; // Foto armazenada como BLOB
 
-    public Pet(int id, String nome, int idade, String especie, String raca, String perfil, String status, int idOng) {
+    public Pet(int id, String nome, int idade, String especie, String raca, String perfil, String status, int idOng,  byte[] foto) {
         this.id_pet = id;
         this.nome = nome;
         this.idade = idade;
@@ -19,6 +20,7 @@ public class Pet {
         this.perfil = perfil;
         this.status = status;
         this.idOng = idOng;
+        this.foto = foto;
     }
 
     // Getters e Setters
@@ -45,4 +47,7 @@ public class Pet {
     
     public int getIdOng() { return idOng; }
     public void setIdOng(int idOng) { this.idOng = idOng; }
+
+    public byte[] getFoto() { return foto; }
+    public void setFoto(byte[] foto) { this.foto = foto; }
 }
