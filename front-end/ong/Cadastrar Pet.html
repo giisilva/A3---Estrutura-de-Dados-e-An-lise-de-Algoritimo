@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meus Pets - Adote um Pet</title>
+  <title>Cadastro de Pets</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -13,7 +13,7 @@
   <style>
     :root {
       --main-purple: #6a1b9a;
-      --main-green: #66bb6a; /* Definido o verde */
+      --main-green: #66bb6a;
       --light-gray: #f9f9f9;
     }
     body {
@@ -90,12 +90,12 @@
     .btn-primary:hover {
       background-color: #500b6b;
     }
-    .btn-danger {
-      background-color: var(--main-green); /* Cor verde alterada */
+    .btn-success {
+      background-color: var(--main-green);
       border: none;
     }
-    .btn-danger:hover {
-      background-color: #4caf50; /* Cor de hover ajustada para verde mais claro */
+    .btn-success:hover {
+      background-color: #4a8a4f;
     }
     footer {
       background-color: var(--main-purple);
@@ -110,20 +110,28 @@
     footer a:hover {
       color: var(--main-green);
     }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px; /* Adicionando o espaçamento */
+    }
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="Index.html">PetMatch</a>
+      <a class="navbar-brand" href="Index ong.html">PetMatch</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
-            <a class="nav-link" href="Pesquisar Pets.html">Pesquisar Pets</a>
+            <a class="nav-link" href="Cadastrar Pet.html">Cadastrar Pets</a>
           </li>
           <!-- Dropdown Perfil -->
           <li class="nav-item dropdown">
@@ -131,7 +139,7 @@
               <i class="bi bi-person-circle nav-icon"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-              <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets</a></li>
+              <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets Cadastrados</a></li>
               <li><a class="dropdown-item" href="Atualizar Perfil.html">Atualizar Perfil</a></li>
               <li><a class="dropdown-item text-danger" href="..\login\Login.html">Sair</a></li>
             </ul>
@@ -143,44 +151,48 @@
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <h1>Meus Pets</h1>
-    <p>Confira os pets que você se cadastrou para adotar e gerencie sua adesão.</p>
+    <h1>Cadastro de Pet</h1>
+    <p>Preencha as informações abaixo para cadastrar um novo pet.</p>
   </div>
 
-  <!-- Pets List (Pets the user has entered the queue for) -->
+  <!-- Formulario de Cadastro -->
   <div class="container my-5">
-    <div class="row">
-      <!-- Example Pet Card -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
-          <div class="card-body text-center">
-            <h5 class="card-title">Pet Nome</h5>
-            <p class="card-text text-muted">Descrição curta do pet.</p>
-            <button class="btn btn-primary me-2">Detalhes</button>
-            <button class="btn btn-danger">Cancelar Adesão</button>
-          </div>
+    <div class="form-container">
+      <form action="#" method="POST">
+        <div class="mb-3">
+          <label for="petName" class="form-label">Nome do Pet</label>
+          <input type="text" class="form-control" id="petName" required>
         </div>
-      </div>
-      <!-- Clone this card for more pets -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
-          <div class="card-body text-center">
-            <h5 class="card-title">Outro Pet</h5>
-            <p class="card-text text-muted">Descrição curta do pet.</p>
-            <button class="btn btn-primary me-2">Detalhes</button>
-            <button class="btn btn-danger">Cancelar Adesão</button>
-          </div>
+        <div class="mb-3">
+          <label for="petType" class="form-label">Tipo de Animal</label>
+          <select class="form-select" id="petType" required>
+            <option value="" disabled selected>Selecione o tipo</option>
+            <option value="dog">Cachorro</option>
+            <option value="cat">Gato</option>
+            <option value="other">Outro</option>
+          </select>
         </div>
-      </div>
+        <div class="mb-3" id="otherTypeContainer" style="display:none;">
+          <label for="otherType" class="form-label">Qual Tipo de Animal?</label>
+          <input type="text" class="form-control" id="otherType">
+        </div>
+        <div class="mb-3">
+          <label for="petDescription" class="form-label">Descrição</label>
+          <textarea class="form-control" id="petDescription" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="petImage" class="form-label">Imagem do Pet</label>
+          <input type="file" class="form-control" id="petImage" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Cadastrar Pet</button>
+      </form>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
     <div class="container text-center">
-      <p class="mb-2">© 2024 Adote um Pet. Todos os direitos reservados.</p>
+      <p class="mb-2">© 2024 PetMatch. Todos os direitos reservados.</p>
       <div class="social-icons">
         <a href="#"><i class="bi bi-facebook"></i></a>
         <a href="#"><i class="bi bi-instagram"></i></a>
@@ -191,5 +203,17 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script para mostrar o campo "Outro" -->
+  <script>
+    document.getElementById('petType').addEventListener('change', function () {
+      var otherTypeContainer = document.getElementById('otherTypeContainer');
+      if (this.value === 'other') {
+        otherTypeContainer.style.display = 'block';
+      } else {
+        otherTypeContainer.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

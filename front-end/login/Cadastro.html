@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Adote um Pet</title>
+  <title>Cadastro - Adote um Pet</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -26,16 +26,16 @@
       align-items: center;
       height: 100vh;
     }
-    .login-container {
+    .register-container {
       background-color: #fff;
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      max-width: 400px;
+      max-width: 500px;
       width: 100%;
     }
-    .login-container h1 {
+    .register-container h1 {
       color: var(--main-purple);
       font-weight: 600;
       margin-bottom: 20px;
@@ -51,7 +51,7 @@
       padding: 10px 15px;
       margin-bottom: 15px;
     }
-    .btn-login {
+    .btn-register {
       background: linear-gradient(45deg, var(--main-purple), var(--main-green));
       color: #fff;
       font-weight: 600;
@@ -61,7 +61,7 @@
       width: 100%;
       transition: background 0.3s ease;
     }
-    .btn-login:hover {
+    .btn-register:hover {
       background: linear-gradient(45deg, var(--main-green), var(--main-purple));
     }
     .role-selection button {
@@ -87,55 +87,55 @@
     .role-selection button.user:hover {
       background-color: #388e3c;
     }
-    .btn-register {
+    .btn-back {
       margin-top: 20px;
-      display: block;
+      display: inline-block;
       font-weight: 600;
-      background: none;
-      border: 2px solid var(--main-purple);
-      border-radius: 50px;
-      padding: 10px 20px;
       color: var(--main-purple);
-      transition: background 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .btn-register:hover {
-      background: var(--main-purple);
-      color: white;
+    .btn-back:hover {
+      color: var(--main-green);
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h1>Login</h1>
-    <p>Selecione como deseja entrar:</p>
+  <div class="register-container">
+    <h1>Cadastro</h1>
+    <p>Escolha como deseja se cadastrar:</p>
     <!-- Role Selection -->
     <div class="role-selection">
-      <button class="ong" onclick="showForm('ong')">Entrar como ONG</button>
-      <button class="user" onclick="showForm('user')">Entrar como Adotante</button>
+      <button class="ong" onclick="showForm('ong')">ONG</button>
+      <button class="user" onclick="showForm('user')">Adotante</button>
     </div>
 
-    <!-- ONG Login Form -->
+    <!-- ONG Registration Form -->
     <div id="form-ong" class="form-section">
-      <h2 class="mb-3" style="color: var(--main-purple);">Login ONG</h2>
+      <h2 class="mb-3" style="color: var(--main-purple);">Cadastro ONG</h2>
       <form>
+        <input type="text" class="form-control" placeholder="Nome da ONG" required>
         <input type="email" class="form-control" placeholder="E-mail da ONG" required>
+        <input type="text" class="form-control" placeholder="CNPJ" required>
         <input type="password" class="form-control" placeholder="Senha" required>
-        <button type="submit" class="btn btn-login">Entrar</button>
+        <button type="submit" class="btn btn-register">Cadastrar</button>
       </form>
     </div>
 
-    <!-- User Login Form -->
+    <!-- User Registration Form -->
     <div id="form-user" class="form-section">
-      <h2 class="mb-3" style="color: var(--main-green);">Login Adotante</h2>
+      <h2 class="mb-3" style="color: var(--main-green);">Cadastro Adotante</h2>
       <form>
-        <input type="email" class="form-control" placeholder="E-mail do Usuário" required>
+        <input type="text" class="form-control" placeholder="Nome Completo" required>
+        <input type="email" class="form-control" placeholder="E-mail" required>
+        <input type="text" class="form-control" placeholder="Telefone" required>
         <input type="password" class="form-control" placeholder="Senha" required>
-        <button type="submit" class="btn btn-login">Entrar</button>
+        <button type="submit" class="btn btn-register">Cadastrar</button>
       </form>
     </div>
 
-    <!-- Cadastro Button -->
-    <a href="cadastro.html" class="btn btn-register">Ainda não tem uma conta? Cadastre-se</a>
+    <!-- Back to Login -->
+    <a href="login.html" class="btn-back">Já tem uma conta? Faça login</a>
   </div>
 
   <!-- Bootstrap JS -->
