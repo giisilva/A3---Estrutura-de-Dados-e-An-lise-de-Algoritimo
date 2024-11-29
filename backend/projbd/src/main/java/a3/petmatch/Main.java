@@ -1,6 +1,6 @@
 package a3.petmatch;
 
-import  java.util.List;
+import java.util.List;
 import java.time.LocalDate;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,10 +13,12 @@ public class Main {
 
         // Salvar (USUARIO / PET / ADOCAO)
         try {
-            Usuario usuario = new Usuario(0, "Gi", "giosr@gmail.com.br", "4444", " 123456789", "adotante", "rua linda");
+            Usuario usuario = new Usuario(0, "Adriano", "adriano@gmail.com.br", "1111", " 123456", "ONG",
+                    "rua linda");
             usuarioDAO.salvar(usuario);
 
-            Pet pet = new Pet(0, "floquinho", 5, "OUTRO", "coelho", "dorminhoco", "disponível", 1, Files.readAllBytes(Paths.get("C:\\Users\\POPULIS\\Desktop\\00_FACULDADE\\6ªSEM\\pets_geral.png")));
+            Pet pet = new Pet(0, "Jully", 5, "GATO", "PELADO", "fofinho", "adotado", 1,
+                    Files.readAllBytes(Paths.get("C:\\Users\\POPULIS\\Desktop\\00_FACULDADE\\6ªSEM\\pets_geral.png"))); // ..\login\Login.html
             petDAO.salvar(pet);
 
             Adocao novaAdocao = new Adocao(0, 2, 2, LocalDate.now());
@@ -29,29 +31,28 @@ public class Main {
         List<Usuario> usuarios = usuarioDAO.listar();
         for (Usuario u : usuarios) {
             System.out.println(
-            "ID: " + u.getIdUsuario() + 
-            ", Nome: " + u.getNome() + 
-            ", Email: " + u.getEmail() +
-            ", Telefone: " + u.getTelefone() +
-            ", Tipo: " + u.getTipo() +
-            ", Endereço: " + u.getEndereco());
+                    "ID: " + u.getIdUsuario() +
+                            ", Nome: " + u.getNome() +
+                            ", Email: " + u.getEmail() +
+                            ", Telefone: " + u.getTelefone() +
+                            ", Tipo: " + u.getTipo() +
+                            ", Endereço: " + u.getEndereco());
         }
 
         List<Pet> pets = petDAO.listar();
         for (Pet p : pets) {
             System.out.println(
-                "ID: " + p.getId() +
-                ", Nome: " + p.getNome() +
-                ", Idade: " + p.getIdade() +
-                ", Espécie: " + p.getEspecie() +
-                ", Raça: " + p.getRaca() +
-                ", Perfil: " + p.getPerfil() +
-                ", Status: " + p.getStatus() +
-                ", ID ONG: " + p.getIdOng()
-            );
+                    "ID: " + p.getId() +
+                            ", Nome: " + p.getNome() +
+                            ", Idade: " + p.getIdade() +
+                            ", Espécie: " + p.getEspecie() +
+                            ", Raça: " + p.getRaca() +
+                            ", Perfil: " + p.getPerfil() +
+                            ", Status: " + p.getStatus() +
+                            ", ID ONG: " + p.getIdOng());
             try {
                 Files.createDirectories(Paths.get("output"));
-            
+
                 if (p.getFoto() != null) {
                     Files.write(Paths.get("output/" + p.getNome() + ".jpg"), p.getFoto());
                     System.out.println("Foto salva em: output/" + p.getNome() + ".jpg");
@@ -66,11 +67,10 @@ public class Main {
         List<Adocao> adocoes = adocaoDAO.listar();
         for (Adocao adocao : adocoes) {
             System.out.println(
-                "ID Adoção: " + adocao.getIdAdocao() +
-                ", ID Pet: " + adocao.getIdPet() +
-                ", ID Adotante: " + adocao.getIdAdotante() +
-                ", Data: " + adocao.getDataAdocao()
-            );
+                    "ID Adoção: " + adocao.getIdAdocao() +
+                            ", ID Pet: " + adocao.getIdPet() +
+                            ", ID Adotante: " + adocao.getIdAdotante() +
+                            ", Data: " + adocao.getDataAdocao());
         }
     }
 }
