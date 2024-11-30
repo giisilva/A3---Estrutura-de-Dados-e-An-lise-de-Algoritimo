@@ -131,7 +131,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
-            <a class="nav-link" href="Cadastrar Pet.html">Cadastrar Pets</a>
+            <button type="button" id="submitPet" class="btn btn-success w-100">Cadastrar Pet</button>
           </li>
           <!-- Dropdown Perfil -->
           <li class="nav-item dropdown">
@@ -215,5 +215,48 @@
       }
     });
   </script>
+
+<!-- capturar os dados do formulário e enviar para a API -->
+  <script>
+    document.getElementById('submitPet').addEventListener('click', async () => {
+      // Capturar os valores do formulário
+      const nome = document.getElementById('petName').value;
+      const tipo = document.getElementById('petType').value;
+      const outroTipo = document.getElementById('otherType').value;
+      const descricao = document.getElementById('petDescription').value;
+
+      // Montar o objeto para enviar ao backend
+      const petData = {
+        nomePet: nome,
+        idadePet: 0, // Atualize com o campo correto, se necessário
+        especiePet: tipo === 'other' ? outroTipo : tipo,
+        racaPet: '', // Atualize com o campo correto, se necessário
+        perfilPet: descricao,
+        statusPet: 'Disponível' // Você pode ajustar conforme sua lógica
+      };
+
+      try {
+        // Enviar os dados para o backend
+        const response = await fetch('http://localhost:8080/api/pets', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(petData),
+        });
+
+        if (response.ok) {
+          alert('Pet cadastrado com sucesso!');
+          document.getElementById('petForm').reset(); // Limpa o formulário
+        } else {
+          alert('Erro ao cadastrar o pet. Tente novamente.');
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+        alert('Erro ao conectar ao servidor.');
+      }
+    });
+  </script>
+
 </body>
 </html>
