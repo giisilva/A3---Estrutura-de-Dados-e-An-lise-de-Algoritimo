@@ -17,9 +17,13 @@ public class Main {
                     "rua linda");
             usuarioDAO.salvar(usuario);
 
-            Pet pet = new Pet(0, "Jully", 5, "GATO", "PELADO", "fofinho", "adotado", 1,
-                    Files.readAllBytes(Paths.get("C:\\Users\\POPULIS\\Desktop\\00_FACULDADE\\6ªSEM\\pets_geral.png"))); // ..\login\Login.html
-            petDAO.salvar(pet);
+            /*
+             * Pet pet = new Pet(0, "Jully", 5, "GATO", "PELADO", "fofinho", "adotado", 1,
+             * Files.readAllBytes(Paths.get(
+             * "C:\\Users\\POPULIS\\Desktop\\00_FACULDADE\\6ªSEM\\pets_geral.png"))); //
+             * ..\login\Login.html
+             * petDAO.salvar(pet);
+             */
 
             Adocao novaAdocao = new Adocao(0, 2, 2, LocalDate.now());
             adocaoDAO.salvar(novaAdocao);
