@@ -233,9 +233,12 @@
     document.getElementById('submitPet').addEventListener('click', async () => {
       // Capturar os valores do formulário
       const nome = document.getElementById('petName').value;
+      const idade = document.getElementById('petAge').value;
       const tipo = document.getElementById('petType').value;
       const outroTipo = document.getElementById('otherType').value;
+      const raca = document.getElementById('petRace').value;
       const descricao = document.getElementById('petDescription').value;
+      const Status = document.getElementById('petStatus').value;
 
       // Montar o objeto para enviar ao backend
       const petData = {
