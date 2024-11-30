@@ -149,6 +149,44 @@
 
   <!-- Pets List (Pets the user has entered the queue for) -->
   <div class="container my-5">
+    <!-- Alteracao Gi Formulario CADASTRO PET-->
+    <h2 class="mb-4">Cadastrar Novo Pet</h2>
+    <form id="form-pet" class="mb-5">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome do Pet:</label>
+        <input type="text" id="nome" name="nome" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="idade" class="form-label">Idade do Pet:</label>
+        <input type="number" id="idade" name="idade" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="especie" class="form-label">Espécie:</label>
+        <select id="especie" name="especie" class="form-select" required>
+          <option value="CACHORRO">Cachorro</option>
+          <option value="GATO">Gato</option>
+          <option value="OUTRO">Outro</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="raca" class="form-label">Raça:</label>
+        <input type="text" id="raca" name="raca" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="perfil" class="form-label">Perfil (Descrição):</label>
+        <textarea id="perfil" name="perfil" class="form-control"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="status" class="form-label">Status:</label>
+        <select id="status" name="status" class="form-select" required>
+          <option value="DISPONÍVEL">Disponível</option>
+          <option value="ADOTADO">Adotado</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar Pet</button>
+    </form>
+    <div id="mensagem"></div>
+    <!-- fim alteração --> 
     <div class="row">
       <!-- Example Pet Card -->
       <div class="col-md-4 mb-4">
@@ -191,5 +229,48 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- alteração GI JS -->
+  <script>
+    document.getElementById('form-pet').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede o comportamento padrão do formulário
+  
+      // Capturar os dados do formulário
+      const pet = {
+        nome: document.getElementById('nome').value,
+        idade: parseInt(document.getElementById('idade').value),
+        especie: document.getElementById('especie').value,
+        raca: document.getElementById('raca').value,
+        perfil: document.getElementById('perfil').value,
+        status: document.getElementById('status').value,
+        idOng: 1 // Substitua pelo ID da ONG do usuário logado
+      };
+  
+      // Enviar os dados para o backend
+      fetch('http://localhost:8080/api/pets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(pet)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Erro ao salvar o pet');
+        }
+      })
+      .then(data => {
+        document.getElementById('mensagem').textContent = `Pet salvo com sucesso: ${data.nome}`;
+        document.getElementById('mensagem').classList.add('alert', 'alert-success');
+        // Limpar o formulário
+        document.getElementById('form-pet').reset();
+      })
+      .catch(error => {
+        document.getElementById('mensagem').textContent = error.message;
+        document.getElementById('mensagem').classList.add('alert', 'alert-danger');
+      });
+    });
+  </script>
+  
 </body>
 </html>

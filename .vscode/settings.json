@@ -2,5 +2,8 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.sourcePaths": [
         "backend/projbd/src"
+    ],
+    "cSpell.words": [
+        "petmatch"
     ]
 }
