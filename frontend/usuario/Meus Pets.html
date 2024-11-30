@@ -146,60 +146,21 @@
     <h1>Meus Pets</h1>
     <p>Confira os pets que você se cadastrou para adotar e gerencie sua adesão.</p>
   </div>
-
-  <!-- Pets List (Pets the user has entered the queue for) -->
-  <div class="container my-5">
-    <!-- Alteracao Gi Formulario CADASTRO PET-->
-    <h2 class="mb-4">Cadastrar Novo Pet</h2>
-    <form id="form-pet" class="mb-5">
-      <div class="mb-3">
-        <label for="nome" class="form-label">Nome do Pet:</label>
-        <input type="text" id="nome" name="nome" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label for="idade" class="form-label">Idade do Pet:</label>
-        <input type="number" id="idade" name="idade" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label for="especie" class="form-label">Espécie:</label>
-        <select id="especie" name="especie" class="form-select" required>
-          <option value="CACHORRO">Cachorro</option>
-          <option value="GATO">Gato</option>
-          <option value="OUTRO">Outro</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="raca" class="form-label">Raça:</label>
-        <input type="text" id="raca" name="raca" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="perfil" class="form-label">Perfil (Descrição):</label>
-        <textarea id="perfil" name="perfil" class="form-control"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="status" class="form-label">Status:</label>
-        <select id="status" name="status" class="form-select" required>
-          <option value="DISPONÍVEL">Disponível</option>
-          <option value="ADOTADO">Adotado</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Salvar Pet</button>
-    </form>
-    <div id="mensagem"></div>
-    <!-- fim alteração --> 
-    <div class="row">
       <!-- Example Pet Card -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
-          <div class="card-body text-center">
-            <h5 class="card-title">Pet Nome</h5>
-            <p class="card-text text-muted">Descrição curta do pet.</p>
-            <button class="btn btn-primary me-2">Detalhes</button>
-            <button class="btn btn-danger">Cancelar Adesão</button>
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
+              <div class="card-body text-center">
+                <h5 class="card-title">Pet Nome</h5>
+                <p class="card-text text-muted">Descrição curta do pet.</p>
+                <button class="btn btn-primary me-2">Detalhes</button>
+                <button class="btn btn-danger">Cancelar Adesão</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+      
       <!-- Clone this card for more pets -->
       <div class="col-md-4 mb-4">
         <div class="card">
@@ -211,9 +172,9 @@
             <button class="btn btn-danger">Cancelar Adesão</button>
           </div>
         </div>
+        </div>
       </div>
     </div>
-  </div>
 
   <!-- Footer -->
   <footer>
