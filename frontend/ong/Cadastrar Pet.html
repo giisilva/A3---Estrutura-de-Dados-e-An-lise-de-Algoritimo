@@ -230,8 +230,20 @@
 
 <!-- capturar os dados do formulário e enviar para a API -->
   <script>
+<<<<<<< HEAD
     document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Impede o comportamento padrão de envio do formulário
+=======
+    document.getElementById('submitPet').addEventListener('click', async () => {
+      // Capturar os valores do formulário
+      const nome = document.getElementById('petName').value;
+      const idade = document.getElementById('petAge').value;
+      const tipo = document.getElementById('petType').value;
+      const outroTipo = document.getElementById('otherType').value;
+      const raca = document.getElementById('petRace').value;
+      const descricao = document.getElementById('petDescription').value;
+      const Status = document.getElementById('petStatus').value;
+>>>>>>> 4729e467b10a6e0eafbb699d5513882a3158aeaf
 
     const nome = document.getElementById('petName').value;
     const tipo = document.getElementById('petType').value;
