@@ -28,6 +28,13 @@
             <version>${spring.boot.version}</version> <!-- Usando a versão do Spring Boot configurada acima -->
         </dependency>
 
+ <!-- Dependência do Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
 <!-- Dependência para testes -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

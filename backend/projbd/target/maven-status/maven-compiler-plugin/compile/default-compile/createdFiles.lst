@@ -1,6 +1,8 @@
 a3\petmatch\UsuarioDAO.class
 a3\petmatch\Adocao.class
+a3\petmatch\CorsConfig.class
 a3\petmatch\Usuario.class
+a3\petmatch\SecurityConfig.class
 a3\petmatch\AdocaoDAO.class
 a3\petmatch\PetDAO.class
 a3\petmatch\Main.class
