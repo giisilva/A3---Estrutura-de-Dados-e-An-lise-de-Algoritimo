@@ -257,10 +257,6 @@
 
   <!-- capturar os dados do formulário e enviar para a API -->
   <script>
-<<<<<<< HEAD
-    document.querySelector('form').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Impede o comportamento padrão de envio do formulário
-=======
     document.getElementById('submitPet').addEventListener('click', async () => {
       // Capturar os valores do formulário
       const nome = document.getElementById('petName').value;
@@ -270,9 +266,7 @@
       const raca = document.getElementById('petRace').value;
       const descricao = document.getElementById('petDescription').value;
       const Status = document.getElementById('petStatus').value;
->>>>>>> 4729e467b10a6e0eafbb699d5513882a3158aeaf
 
-<<<<<<< HEAD
       // Montar o objeto para enviar ao backend
       const petData = {
         nomePet: nome,
@@ -291,30 +285,6 @@
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(petData),
-=======
-    const nome = document.getElementById('petName').value;
-    const tipo = document.getElementById('petType').value;
-    const outroTipo = document.getElementById('otherType').value;
-    const descricao = document.getElementById('petDescription').value;
-
-    const petData = {
-        nome: nome,
-        idade: 0, // Atualize se tiver o campo no formulário
-        especie: tipo === 'other' ? outroTipo : tipo,
-        raca: '', // Atualize conforme necessário
-        perfil: descricao,
-        status: 'DISPONÍVEL', // Ajuste se houver lógica de status
-        idOng: 1 // Substitua pelo ID da ONG logada
-    };
-
-    try {
-        const response = await fetch( 'http://localhost:8080/api/pets', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(petData)
->>>>>>> e166493d33e75b300b65ce85d3631601f8140918
         });
         if (response.ok) {
             alert('Pet cadastrado com sucesso!');
@@ -325,13 +295,8 @@
     } catch (error) {
         console.error('Erro na comunicação com o servidor:', error);
         alert('Erro ao conectar ao servidor.');
-<<<<<<< HEAD
       }*/
     });
-=======
-    }
-});
->>>>>>> e166493d33e75b300b65ce85d3631601f8140918
   </script>
 
 </body>
