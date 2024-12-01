@@ -145,6 +145,15 @@
     .btn-danger:hover {
       background-color: #4caf50;
     }
+    .card-img-top {
+      width: 100%;
+      height: 180px; /* Ajuste a altura para o valor desejado */
+      object-fit: cover; /* Isso mantém a proporção das imagens sem distorcer */
+    }
+    .btn-success {
+      background-color: var(--main-green);
+      border: none;
+    }
     @media (max-width: 768px) {
       .col-md-4 {
         flex: 1 1 calc(50% - 30px);
@@ -159,7 +168,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" style="height: 70px;">
     <div class="container">
       <a class="navbar-brand" href="Index.html">PetMatch</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -170,10 +179,9 @@
           <li class="nav-item">
             <a class="nav-link" href="Pesquisar Pets.html">Pesquisar Pets</a>
           </li>
-          <!-- Dropdown Perfil -->
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle nav-icon"></i>
+              <i class="bi bi-person-circle nav-icon" style="font-size: 1.8rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
               <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets</a></li>
@@ -185,6 +193,7 @@
       </div>
     </div>
   </nav>
+
 
   <!-- Hero Section -->
   <div class="hero-section">
@@ -198,7 +207,7 @@
       <!-- Filtro de Pets -->
       <div class="filter-column">
         <h5>Filtros</h5>
-        <form>
+        <form id="filterForm">
           <div class="mb-3">
             <label for="petType" class="form-label">Tipo de Pet</label>
             <select class="form-select" id="petType">
@@ -234,22 +243,121 @@
 
       <!-- Lista de Pets -->
       <div class="pets-column">
-        <div class="row">
+        <div class="row" id="petCards">
           <!-- Card de Pet -->
-          <div class="col-md-4 mb-4">
+          <div class="col-md-4 mb-4" data-species="dog">
             <div class="card">
-              <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet">
+              <img src="../data/pet/pet1.jpg" class="card-img-top" alt="Mike">
               <div class="card-body text-center">
-                <h5 class="card-title">Pet Nome</h5>
-                <p class="card-text">Descrição do pet.</p>
+                <h5 class="card-title">Mike</h5>
+                <p class="card-text">Cachorro porte médio, dócil e animado.</p>
                 <div class="card-buttons">
-                  <button class="btn btn-primary">Detalhes</button>
-                  <button class="btn btn-danger">Cancelar Adesão</button>
+                  <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet1">Detalhes</button>
+                  <a href="Meus Pets.html" class="btn btn-success">Entrar na Fila</a>
                 </div>
               </div>
             </div>
           </div>
           <!-- Outros cards podem ser adicionados aqui, e irão automaticamente se ajustar -->
+          <div class="col-md-4 mb-4"  data-species="dog">
+            <div class="card">
+              <img src="../data/pet/pet2.jpg" class="card-img-top" alt="Luna">
+              <div class="card-body text-center">
+                <h5 class="card-title">Luna</h5>
+                <p class="card-text">Cachorro pequeno porte, tímida e confiável.</p>
+                <div class="card-buttons">
+                  <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet2">Detalhes</button>
+                  <a href="Meus Pets.html" class="btn btn-success">Entrar na Fila</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4"  data-species="cat">
+            <div class="card">
+              <img src="../data/pet/pet3.jpg" class="card-img-top" alt="Mike">
+              <div class="card-body text-center">
+                <h5 class="card-title">Amora</h5>
+                <p class="card-text">Gato filhote, travessa e gentil.</p>
+                <div class="card-buttons">
+                  <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet3">Detalhes</button>
+                  <a href="Meus Pets.html" class="btn btn-success">Entrar na Fila</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPet1" tabindex="-1" aria-labelledby="modalPet1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-roxo">
+          <h5 class="modal-title" id="modalPet1Label">Mike</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="..\data\pet\pet1.jpg" class="img-fluid mb-3" alt="Mike">
+          <h5>Mike</h5>
+          <p class="text-muted">Responde por: Mike</p>
+          <p><strong>Idade:</strong> 4 Anos</p>
+          <p><strong>Espécie:</strong> Cachorro</p>
+          <p><strong>Raça:</strong> Vira-Lata</p>
+          <p><strong>Descrição:</strong> Cachorro porte médio, dócil e animado.</p>
+          <p><strong>Status:</strong>Disponível</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPet2" tabindex="-1" aria-labelledby="modalPet2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-roxo">
+          <h5 class="modal-title" id="modalPet2Label">Luna</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="..\data\pet\pet2.jpg" class="img-fluid mb-3" alt="Luna">
+          <h5>Luna</h5>
+          <p class="text-muted">Responde por: Luna</p>
+          <p><strong>Idade:</strong> 5 Anos</p>
+          <p><strong>Espécie:</strong> Cachorro</p>
+          <p><strong>Raça:</strong> Vira-Lata</p>
+          <p><strong>Descrição:</strong> Cachorro porte médio, dócil e animado.</p>
+          <p><strong>Status:</strong>Disponível</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPet3" tabindex="-1" aria-labelledby="modalPet3Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-roxo">
+          <h5 class="modal-title" id="modalPet3Label">Amora</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="..\data\pet\pet3.jpg" class="img-fluid mb-3" alt="Amora">
+          <h5>Amora</h5>
+          <p class="text-muted">Responde por: Amora</p>
+          <p><strong>Idade:</strong> 2 Anos</p>
+          <p><strong>Espécie:</strong> Gato</p>
+          <p><strong>Raça:</strong> Vira-Lata</p>
+          <p><strong>Descrição:</strong> Gato filhote, travessa e gentil.</p>
+          <p><strong>Status:</strong>Disponível</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
@@ -266,6 +374,24 @@
       </div>
     </div>
   </footer>
+
+  <!--Script para o filtro persolnalizado-->
+  <script>
+    document.getElementById('filterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const petType = document.getElementById('petType').value;
+      const petCards = document.querySelectorAll('.col-md-4');
+
+      petCards.forEach(card => {
+        const species = card.getAttribute('data-species');
+        if (petType === 'Selecione' || species === petType) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

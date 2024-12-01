@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONG - Adote um Pet</title>
+  <title>Adote um Pet</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -17,48 +16,48 @@
       --main-green: #66bb6a;
       --light-gray: #f9f9f9;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background-color: var(--light-gray);
       margin: 0;
       padding: 0;
     }
-
     .navbar {
       background: var(--main-purple);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
     .navbar-brand {
       font-weight: 600;
       color: #fff !important;
     }
-
     .nav-link {
       color: #fff !important;
       margin-right: 15px;
     }
-
-    .btn-cadastrar-pet {
-      color: white !important;
-      text-decoration: none;
-    }
-
-    .btn-cadastrar-pet:hover {
-      text-decoration: underline;
-    }
-
     .nav-icon {
       font-size: 1.8rem;
       color: #fff !important;
       transition: transform 0.3s ease;
     }
-
     .nav-icon:hover {
       transform: scale(1.1);
     }
-
+    .dropdown-menu {
+      background: var(--light-gray);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-item {
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      background-color: var(--main-purple);
+      color: white;
+    }
     .hero-section {
       background: linear-gradient(45deg, var(--main-purple), var(--main-green));
       color: white;
@@ -66,18 +65,14 @@
       padding: 80px 20px;
       border-radius: 0 0 50px 50px;
     }
-
     .hero-section h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
       font-weight: 600;
     }
-
-    .container-pets {
-      margin: 20px auto;
-      max-width: 1200px;
+    .hero-section p {
+      font-size: 1.2rem;
     }
-
     .card {
       border: none;
       border-radius: 10px;
@@ -85,62 +80,27 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
     }
-
     .card:hover {
       transform: scale(1.05);
     }
-
-    .card img {
-      max-height: 200px;
-      object-fit: cover;
-      width: 100%;
-    }
-
     .card-img-top {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-
-    .card-body {
-      text-align: center;
-    }
-
     .btn-primary {
       background-color: var(--main-purple);
       border: none;
     }
-
     .btn-primary:hover {
       background-color: #500b6b;
     }
-
     .btn-success {
       background-color: var(--main-green);
       border: none;
     }
-
     .btn-success:hover {
       background-color: #4a8a4f;
-    }
-
-    /* Modal Customização */
-    .modal-content {
-      border-radius: 15px;
-    }
-
-    .modal-header {
-      background-color: var(--main-purple);
-      color: white;
-      border-radius: 15px 15px 0 0;
-    }
-
-    .modal-body {
-      background-color: #f8f9fa;
-    }
-
-    .list-group-item {
-      font-size: 1.1rem;
     }
     footer {
       background-color: var(--main-purple);
@@ -159,37 +119,28 @@
     background-color: var(--main-purple);
     color: white;  /* Para garantir que o texto fique visível */
     }
-    /* Centralizando o modal */
-    .modal-dialog {
-      max-width: 600px;
-      margin: auto;
-    }
   </style>
 </head>
-
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg" style="height: 70px;">
     <div class="container">
-      <a class="navbar-brand" href="Index ong.html">PetMatch</a>
+      <a class="navbar-brand" href="Index.html">PetMatch</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
-            <a class="nav-link" href="Cadastrar Pet.html">Cadastrar Pets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Gerenciar Pets.html">Gerenciar Pets</a>
+            <a class="nav-link" href="Pesquisar Pets.html">Pesquisar Pets</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle nav-icon" style="font-size: 1.8rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-              <li><a class="dropdown-item" href="Atualizar Perfil ong.html">Atualizar Perfil</a></li>
+              <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets</a></li>
+              <li><a class="dropdown-item" href="Atualizar Perfil.html">Atualizar Perfil</a></li>
               <li><a class="dropdown-item text-danger" href="..\login\Login.html">Sair</a></li>
             </ul>
           </li>
@@ -200,14 +151,13 @@
 
   <!-- Hero Section -->
   <div class="hero-section">
-    <h1>Bem-vindo, ONG!</h1>
-    <p>Gerencie os pets cadastrados e os interessados em adoção.</p>
+    <h1>Adote seu novo amigo hoje!</h1>
+    <p>Encontre os pets disponíveis e entre na fila para adoção.</p>
   </div>
 
   <!-- Pets List -->
-  <div class="container-pets my-5">
+  <div class="container my-5">
     <div class="row">
-      <!-- Card 1 -->
       <div class="col-md-4 mb-4">
         <div class="card">
           <img src="..\data\pet\pet1.jpg" class="card-img-top" alt="Pet Image">
@@ -215,12 +165,11 @@
             <h5 class="card-title">Mike</h5>
             <p class="card-text text-muted">Cachorro porte médio, dócil e animado.</p>
             <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet1">Detalhes</button>
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#adotantesModal">Lista de
-              Adotantes</button>
+            <button class="btn btn-success">Adotar</button>
           </div>
         </div>
       </div>
-      <!-- Card 2 -->
+
       <div class="col-md-4 mb-4">
         <div class="card">
           <img src="..\data\pet\pet2.jpg" class="card-img-top" alt="Pet Image">
@@ -228,12 +177,11 @@
             <h5 class="card-title">Luna</h5>
             <p class="card-text text-muted">Cachorro pequeno porte, tímida e confiável.</p>
             <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet2">Detalhes</button>
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#adotantesModal">Lista de
-              Adotantes</button>
+            <button class="btn btn-success">Adotar</button>
           </div>
         </div>
       </div>
-      <!-- Card 3 -->
+
       <div class="col-md-4 mb-4">
         <div class="card">
           <img src="..\data\pet\pet3.jpg" class="card-img-top" alt="Pet Image">
@@ -241,15 +189,13 @@
             <h5 class="card-title">Amora</h5>
             <p class="card-text text-muted">Gato filhote, travessa e gentil.</p>
             <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet3">Detalhes</button>
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#adotantesModal">Lista de
-              Adotantes</button>
+            <a href="Meus Pets.html" class="btn btn-success">Adotar</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!--Modal de detalhes do pet-->
   <div class="modal fade" id="modalPet1" tabindex="-1" aria-labelledby="modalPet1Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -322,27 +268,6 @@
     </div>
   </div>
 
-  <!-- Modal de Adotantes -->
-  <div class="modal fade" id="adotantesModal" tabindex="-1" aria-labelledby="adotantesModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="adotantesModalLabel">Fila de Adotantes</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul class="list-group">
-            <li class="list-group-item">1. João Silva</li>
-            <li class="list-group-item">2. Maria Oliveira</li>
-            <li class="list-group-item">3. Pedro Costa</li>
-            <li class="list-group-item">4. Ana Souza</li>
-            <!-- Adicione mais adotantes conforme necessário -->
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer>
     <div class="container text-center">
@@ -358,5 +283,4 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

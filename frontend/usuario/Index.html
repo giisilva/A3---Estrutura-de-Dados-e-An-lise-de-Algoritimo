@@ -34,30 +34,6 @@
       color: #fff !important;
       margin-right: 15px;
     }
-    .nav-icon {
-      font-size: 1.8rem;
-      color: #fff !important;
-      transition: transform 0.3s ease;
-    }
-    .nav-icon:hover {
-      transform: scale(1.1);
-    }
-    .dropdown-menu {
-      background: var(--light-gray);
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    .dropdown-item {
-      font-weight: 500;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-    .dropdown-item:hover {
-      background-color: var(--main-purple);
-      color: white;
-    }
     .hero-section {
       background: linear-gradient(45deg, var(--main-purple), var(--main-green));
       color: white;
@@ -70,9 +46,6 @@
       margin-bottom: 20px;
       font-weight: 600;
     }
-    .hero-section p {
-      font-size: 1.2rem;
-    }
     .card {
       border: none;
       border-radius: 10px;
@@ -82,6 +55,11 @@
     }
     .card:hover {
       transform: scale(1.05);
+    }
+    .card-img-top {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
     }
     .btn-primary {
       background-color: var(--main-purple);
@@ -102,82 +80,124 @@
       color: #fff;
       padding: 30px 20px;
     }
-    footer a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    footer a:hover {
-      color: var(--main-green);
+    .modal-header-roxo {
+    background-color: var(--main-purple);
+    color: white;  /* Para garantir que o texto fique visível */
     }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="Index.html">PetMatch</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item">
-          <a class="nav-link" href="Pesquisar Pets.html">Pesquisar Pets</a>
-        </li>
-        <!-- Dropdown Perfil -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle nav-icon"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-            <!-- Atualize o link para "Meus Pets" aqui -->
-            <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets</a></li> <!-- Link para a página meus-pets.html -->
-            <li><a class="dropdown-item" href="Atualizar Perfil.html">Atualizar Perfil</a></li>
-            <li><a class="dropdown-item text-danger" href="..\login\Login.html">Sair</a></li>
-          </ul>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg" style="height: 70px;">
+    <div class="container">
+      <a class="navbar-brand" href="Index.html">PetMatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="Pesquisar Pets.html">Pesquisar Pets</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle" style="font-size: 1.8rem;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets</a></li>
+              <li><a class="dropdown-item" href="Atualizar Perfil.html">Atualizar Perfil</a></li>
+              <li><a class="dropdown-item text-danger" href="..\login\Login.html">Sair</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 
   <!-- Hero Section -->
   <div class="hero-section">
     <h1>Adote seu novo amigo hoje!</h1>
-    <p>Encontre os pets disponíveis e entre na fila para adoção.</p>
+    <p>Encontre ONGS próximas e entre na fila para adoção.</p>
   </div>
 
   <!-- Pets List -->
   <div class="container my-5">
     <div class="row">
-      <!-- Example Pet Card -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
+          <img src="..\data\ong\ong1.png" class="card-img-top" alt="ONG Cão sem Dono">
           <div class="card-body text-center">
-            <h5 class="card-title">Pet Nome</h5>
-            <p class="card-text text-muted">Descrição curta do pet.</p>
-            <button class="btn btn-primary me-2">Detalhes</button>
-            <button class="btn btn-success">Entrar na Fila</button>
+            <h5 class="card-title">ONG Cão sem Dono</h5>
+            <p class="card-text text-muted">ONG de proteção animal</p>
+            <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalOng1">Detalhes</button>
+            <a href="Pets.html" class="btn btn-success">Entrar na Fila</a>
           </div>
         </div>
       </div>
-      <!-- Clone this card for more pets -->
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="..\data\ong\ong2.jpg" class="card-img-top" alt="ONG RASPA">
+          <div class="card-body text-center">
+            <h5 class="card-title">ONG RASPA</h5>
+            <p class="card-text text-muted">ONG RASPA Respeito Animal</p>
+            <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalOng2">Detalhes</button>
+            <a href="Pets.html" class="btn btn-success">Entrar na Fila</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal ONG Cão sem Dono -->
+<div class="modal fade" id="modalOng1" tabindex="-1" aria-labelledby="modalOng1Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header modal-header-roxo">
+        <h5 class="modal-title" id="modalOng1Label">Detalhes da ONG Cão sem Dono</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="..\data\ong\ong1.png" class="img-fluid mb-3" alt="ONG Cão sem Dono">
+        <h5>ONG Cão sem Dono</h5>
+        <p class="text-muted">ONG de proteção animal</p>
+        <p><strong>Localização:</strong> Rua dos Animais, 123, São Paulo - SP</p>
+        <p><strong>Horário de Funcionamento:</strong> Segunda a Sexta, das 9h às 18h</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal ONG RASPA -->
+  <div class="modal fade" id="modalOng2" tabindex="-1" aria-labelledby="modalOng2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-roxo">
+          <h5 class="modal-title" id="modalOng2Label">Detalhes da ONG RASPA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="..\data\ong\ong2.jpg" class="img-fluid mb-3" alt="ONG RASPA">
+          <h5>ONG RASPA</h5>
+          <p class="text-muted">ONG RASPA Respeito Animal</p>
+          <p><strong>Localização:</strong> Avenida Pet Friendly, 456, Campinas - SP</p>
+          <p><strong>Horário de Funcionamento:</strong> Segunda a Sábado, das 10h às 17h</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
     <div class="container text-center">
-      <p class="mb-2">© 2024 Adote um Pet. Todos os direitos reservados.</p>
-      <div class="social-icons">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-        <a href="#"><i class="bi bi-twitter"></i></a>
-      </div>
+      <p>© 2024 Adote um Pet. Todos os direitos reservados.</p>
     </div>
   </footer>
 

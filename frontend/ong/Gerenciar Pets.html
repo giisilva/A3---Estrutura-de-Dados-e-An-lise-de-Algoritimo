@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pets - Adote um Pet</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-purple: #6a1b9a;
+            --main-green: #66bb6a;
+            --light-gray: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: var(--main-purple);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            margin-right: 15px;
+        }
+
+        .nav-icon {
+            font-size: 1.8rem;
+            color: #fff !important;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(45deg, var(--main-purple), var(--main-green));
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background-color: var(--main-purple);
+            color: #fff;
+            padding: 30px 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--main-green);
+        }
+
+        .container-main {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .filter-column,
+        .pets-column {
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .filter-column {
+            flex: 0 0 25%;
+            background-color: #fff;
+        }
+
+        .pets-column {
+            flex: 1;
+            background-color: #fff;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .col-md-4 {
+            flex: 1 1 calc(33.333% - 30px);
+            max-width: calc(33.333% - 30px);
+            box-sizing: border-box;
+        }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            /* Centraliza os botões em relação ao card */
+        }
+
+        .card-buttons .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            /* Garante que os botões fiquem centralizados */
+            width: 100%;
+            /* Garante que o grupo ocupe toda a largura disponível */
+        }
+
+        .card-buttons .btn-group .btn {
+            flex: 1;
+            /* Faz os botões dentro do grupo se esticarem igualmente */
+            min-width: 120px;
+            /* Definir largura mínima para os botões */
+        }
+
+        .card-buttons .btn {
+            height: 40px;
+            /* Definir altura uniforme */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-buttons button {
+            width: 100%;
+            /* Faz os botões de "Detalhes" e "Excluir Pet" ocuparem a mesma largura */
+        }
+
+        .card-buttons .btn:last-child {
+            width: 80%;
+            /* O botão "Lista de Adotantes" tem largura menor */
+        }
+
+
+        .btn-primary {
+            background-color: var(--main-purple);
+            border: none;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            /* Diminui o tamanho da fonte */
+        }
+
+        .btn-primary:hover {
+            background-color: #500b6b;
+        }
+
+        .btn-danger {
+            background-color: var(--main-green);
+            border: none;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            /* Diminui o tamanho da fonte */
+        }
+
+        .btn-danger:hover {
+            background-color: #4caf50;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 180px;
+            /* Ajuste a altura para o valor desejado */
+            object-fit: cover;
+            /* Isso mantém a proporção das imagens sem distorcer */
+        }
+
+        .btn-success {
+            background-color: var(--main-green);
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .col-md-4 {
+                flex: 1 1 calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-md-4 {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" style="height: 70px;">
+        <div class="container">
+            <a class="navbar-brand" href="Index ong.html">PetMatch</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cadastrar Pet.html">Cadastrar Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Gerenciar Pets.html">Gerenciar Pets</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle nav-icon" style="font-size: 1.8rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="Atualizar Perfil ong.html">Atualizar Perfil</a></li>
+                            <li><a class="dropdown-item text-danger" href="..\login\Login.html">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Procure um Pet</h1>
+        <p>Busque por pets com filtros personalizados.</p>
+    </div>
+
+    <!-- Corpo da Página -->
+    <div class="container my-5">
+        <div class="container-main">
+            <!-- Filtro de Pets -->
+            <div class="filter-column">
+                <h5>Filtros</h5>
+                <form id="filterForm">
+                    <div class="mb-3">
+                        <label for="petType" class="form-label">Tipo de Pet</label>
+                        <select class="form-select" id="petType">
+                            <option selected>Selecione</option>
+                            <option value="dog">Cachorro</option>
+                            <option value="cat">Gato</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="petAge" class="form-label">Idade</label>
+                        <select class="form-select" id="petAge">
+                            <option selected>Selecione</option>
+                            <option value="puppy">Filhote</option>
+                            <option value="adult">Adulto</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="petSize" class="form-label">Porte</label>
+                        <select class="form-select" id="petSize">
+                            <option selected>Selecione</option>
+                            <option value="small">Pequeno</option>
+                            <option value="medium">Médio</option>
+                            <option value="large">Grande</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Aplicar Filtro</button>
+                </form>
+            </div>
+
+            <!-- Lista de Pets -->
+            <div class="pets-column">
+                <div class="row" id="petCards">
+                    <!-- Card de Pet -->
+                    <div class="col-md-4 mb-4" data-species="dog">
+                        <div class="card">
+                            <img src="../data/pet/pet1.jpg" class="card-img-top" alt="Mike">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Mike</h5>
+                                <p class="card-text">Cachorro porte médio, dócil e animado.</p>
+                                <div class="card-buttons">
+                                    <!-- Botões lado a lado -->
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#modalPet1">Detalhes</button>
+                                        <a href="#" class="btn btn-success">Excluir Pet</a>
+                                    </div>
+                                    <!-- Botão "Lista de Adotantes" centralizado abaixo -->
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#adotantesModal">Lista de Adotantes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Outros cards podem ser adicionados aqui, e irão automaticamente se ajustar -->
+                    <div class="col-md-4 mb-4" data-species="dog">
+                        <div class="card">
+                            <img src="../data/pet/pet2.jpg" class="card-img-top" alt="Luna">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Luna</h5>
+                                <p class="card-text">Cachorro pequeno porte, tímida e confiável.</p>
+                                <div class="card-buttons">
+                                    <!-- Botões lado a lado -->
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#modalPet2">Detalhes</button>
+                                        <a href="#" class="btn btn-success">Excluir Pet</a>
+                                    </div>
+                                    <!-- Botão "Lista de Adotantes" centralizado abaixo -->
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#adotantesModal">Lista de Adotantes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4" data-species="cat">
+                        <div class="card">
+                            <img src="../data/pet/pet3.jpg" class="card-img-top" alt="Mike">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Amora</h5>
+                                <p class="card-text">Gato filhote, travessa e gentil.</p>
+                                <div class="card-buttons">
+                                    <!-- Botões lado a lado -->
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#modalPet2">Detalhes</button>
+                                        <a href="#" class="btn btn-success">Excluir Pet</a>
+                                    </div>
+                                    <!-- Botão "Lista de Adotantes" centralizado abaixo -->
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#adotantesModal">Lista de Adotantes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPet1" tabindex="-1" aria-labelledby="modalPet1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-header-roxo">
+                    <h5 class="modal-title" id="modalPet1Label">Mike</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="..\data\pet\pet1.jpg" class="img-fluid mb-3" alt="Mike">
+                    <h5>Mike</h5>
+                    <p class="text-muted">Responde por: Mike</p>
+                    <p><strong>Idade:</strong> 4 Anos</p>
+                    <p><strong>Espécie:</strong> Cachorro</p>
+                    <p><strong>Raça:</strong> Vira-Lata</p>
+                    <p><strong>Descrição:</strong> Cachorro porte médio, dócil e animado.</p>
+                    <p><strong>Status:</strong>Disponível</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPet2" tabindex="-1" aria-labelledby="modalPet2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-header-roxo">
+                    <h5 class="modal-title" id="modalPet2Label">Luna</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="..\data\pet\pet2.jpg" class="img-fluid mb-3" alt="Luna">
+                    <h5>Luna</h5>
+                    <p class="text-muted">Responde por: Luna</p>
+                    <p><strong>Idade:</strong> 5 Anos</p>
+                    <p><strong>Espécie:</strong> Cachorro</p>
+                    <p><strong>Raça:</strong> Vira-Lata</p>
+                    <p><strong>Descrição:</strong> Cachorro porte médio, dócil e animado.</p>
+                    <p><strong>Status:</strong>Disponível</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPet3" tabindex="-1" aria-labelledby="modalPet3Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-header-roxo">
+                    <h5 class="modal-title" id="modalPet3Label">Amora</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="..\data\pet\pet3.jpg" class="img-fluid mb-3" alt="Amora">
+                    <h5>Amora</h5>
+                    <p class="text-muted">Responde por: Amora</p>
+                    <p><strong>Idade:</strong> 2 Anos</p>
+                    <p><strong>Espécie:</strong> Gato</p>
+                    <p><strong>Raça:</strong> Vira-Lata</p>
+                    <p><strong>Descrição:</strong> Gato filhote, travessa e gentil.</p>
+                    <p><strong>Status:</strong>Disponível</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Adotantes -->
+    <div class="modal fade" id="adotantesModal" tabindex="-1" aria-labelledby="adotantesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adotantesModalLabel">Fila de Adotantes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">1. João Silva</li>
+                        <li class="list-group-item">2. Maria Oliveira</li>
+                        <li class="list-group-item">3. Pedro Costa</li>
+                        <li class="list-group-item">4. Ana Souza</li>
+                        <!-- Adicione mais adotantes conforme necessário -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p class="mb-2">© 2024 Adote um Pet. Todos os direitos reservados.</p>
+            <div class="social-icons">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!--Script para o filtro persolnalizado-->
+    <script>
+        document.getElementById('filterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const petType = document.getElementById('petType').value;
+            const petCards = document.querySelectorAll('.col-md-4');
+
+            petCards.forEach(card => {
+                const species = card.getAttribute('data-species');
+                if (petType === 'Selecione' || species === petType) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

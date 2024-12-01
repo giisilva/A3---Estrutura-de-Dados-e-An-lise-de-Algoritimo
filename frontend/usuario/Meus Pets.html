@@ -110,11 +110,22 @@
     footer a:hover {
       color: var(--main-green);
     }
+    .btn-success {
+      background-color: var(--main-green);
+      border: none;
+    }
+    .btn-success:hover {
+      background-color: #4a8a4f;
+    }
+    .modal-header-roxo {
+    background-color: var(--main-purple);
+    color: white;  /* Para garantir que o texto fique visível */
+    }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" style="height: 70px;">
     <div class="container">
       <a class="navbar-brand" href="Index.html">PetMatch</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -125,10 +136,9 @@
           <li class="nav-item">
             <a class="nav-link" href="Pesquisar Pets.html">Pesquisar Pets</a>
           </li>
-          <!-- Dropdown Perfil -->
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle nav-icon"></i>
+              <i class="bi bi-person-circle nav-icon" style="font-size: 1.8rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
               <li><a class="dropdown-item" href="Meus Pets.html">Meus Pets</a></li>
@@ -141,6 +151,7 @@
     </div>
   </nav>
 
+
   <!-- Hero Section -->
   <div class="hero-section">
     <h1>Meus Pets</h1>
@@ -151,27 +162,38 @@
         <div class="row">
           <div class="col-md-4 mb-4">
             <div class="card">
-              <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
+              <img src="..\data\pet\pet3.jpg" class="card-img-top" alt="Pet Image">
               <div class="card-body text-center">
-                <h5 class="card-title">Pet Nome</h5>
-                <p class="card-text text-muted">Descrição curta do pet.</p>
-                <button class="btn btn-primary me-2">Detalhes</button>
-                <button class="btn btn-danger">Cancelar Adesão</button>
+                <h5 class="card-title">Amora</h5>
+                <p class="card-text text-muted">Gato filhote, travessa e gentil.</p>
+                <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalPet3">Detalhes</button>
+                <button class="btn btn-success">Cancelar Adesão</button>
               </div>
             </div>
           </div>
-      
-      <!-- Clone this card for more pets -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Pet Image">
-          <div class="card-body text-center">
-            <h5 class="card-title">Outro Pet</h5>
-            <p class="card-text text-muted">Descrição curta do pet.</p>
-            <button class="btn btn-primary me-2">Detalhes</button>
-            <button class="btn btn-danger">Cancelar Adesão</button>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalPet3" tabindex="-1" aria-labelledby="modalPet3Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header modal-header-roxo">
+            <h5 class="modal-title" id="modalPet3Label">Amora</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </div>
+          <div class="modal-body text-center">
+            <img src="..\data\pet\pet3.jpg" class="img-fluid mb-3" alt="Amora">
+            <h5>Amora</h5>
+            <p class="text-muted">Responde por: Amora</p>
+            <p><strong>Idade:</strong> 2 Anos</p>
+            <p><strong>Espécie:</strong> Gato</p>
+            <p><strong>Raça:</strong> Vira-Lata</p>
+            <p><strong>Descrição:</strong> Gato filhote, travessa e gentil.</p>
+            <p><strong>Status:</strong>Disponível</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
         </div>
       </div>
     </div>
