@@ -1,4 +1,4 @@
-package ListaDupLigada;
+package a3.petmatch.ListaDupLigada;
 public class Node {
     private String nome;
     private int idade;

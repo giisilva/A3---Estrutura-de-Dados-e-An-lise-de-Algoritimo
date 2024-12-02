@@ -1,6 +1,10 @@
 package a3.petmatch;
 
 import java.util.List;
+
+import a3.petmatch.Fila.Fila;
+import a3.petmatch.ListaDupLigada.ListaPet;
+
 import java.time.LocalDate;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -75,6 +79,42 @@ public class Main {
                             ", ID Pet: " + adocao.getIdPet() +
                             ", ID Adotante: " + adocao.getIdAdotante() +
                             ", Data: " + adocao.getDataAdocao());
+        }
+
+        ListaPet lista = new ListaPet("Pets");
+        lista.addStart("Mike", 4, "cachorro", "Vira-Lata", "cachorro porte médio, dócil e animado", "disponivel");
+
+        lista.addEnd("Amora", 2, "Gato", "Vira-Lata", "Gato filhote, travessa e gentil", "Disponível" );
+
+        lista.addMiddle("Mike", "Luna", 5, "Cachorro", "Vira-Lata", "Cachorro porte médio, dócil e animado", "Disponível");
+
+
+        System.out.println("lista na ordem: ");
+        lista.printLista();
+
+        lista.removeMiddle("Mike");
+        System.out.println("lista na ordem: ");
+        lista.printLista();
+
+        lista.removeStart();
+        System.out.println("lista na ordem: ");
+        lista.printLista();
+                
+        lista.removeEnd();
+        System.out.println("lista na ordem: ");
+        lista.printLista();
+
+        Fila fila = new Fila();
+        fila.addFila("João Silva", "joaosilva@gmail.com.br", "1111", "123456", "Rua Espanha" );
+        fila.addFila("Maria Oliveira", "mariaoliveira@gmail.com.br", "1222", "723452", "Rua Maria Tomásia" );
+        fila.addFila("Pedro Costa", "pedrocosta@gmail.com.br", "1333", "849056", "Rua Rui Barbosa" );
+        fila.addFila("Ana Souza", "anasouza@gmail.com.br", "1444", "915761", "Rua Camilo de Matos" );
+        
+        System.out.println("Fila: ");
+        fila.printFila();
+
+        while(!fila.isEmpty()){
+            System.out.println("Removendo: " + fila.removeFila());
         }
     }
 }

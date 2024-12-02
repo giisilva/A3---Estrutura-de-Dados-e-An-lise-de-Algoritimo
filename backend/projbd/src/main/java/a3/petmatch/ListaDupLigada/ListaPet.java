@@ -1,4 +1,4 @@
-package ListaDupLigada;
+package a3.petmatch.ListaDupLigada;
 //import ListaDupLigada.Node;
 public class ListaPet {
     private Node firstNode;
@@ -115,21 +115,26 @@ public class ListaPet {
             return false;
         }
 
-        if(atual==firstNode){
-            removeStart();
-        }else if(atual == lastNode){
-            removeEnd();
-        }else{
-            atual.getPrevNode().setNextNode(atual.getNextNode());
-            atual.getNextNode().setPrevNode(atual.getPrevNode());
-        }
+        Node proximo = atual.getNextNode();
+            if (proximo == null) {
+            System.out.println("Não há um nó após o especificado para remover.");
+        return false;
+    }
+
+    // Atualize as referências para remover o nó seguinte
+    if (proximo == lastNode) { // Se for o último nó
+        removeEnd();
+    } else {
+        proximo.getNextNode().setPrevNode(atual);
+        atual.setNextNode(proximo.getNextNode());
+    }
         
         return true;
 
     }
 
     public void printLista() {
-        System.out.println("Lista: " + nome);
+        System.out.println(nome);
         if (firstNode == null) {
             System.out.println("A lista está vazia.");
             return; // Não tenta percorrer a lista se estiver vazia
