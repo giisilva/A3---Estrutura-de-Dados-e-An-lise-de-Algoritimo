@@ -92,17 +92,13 @@ public class Main {
         System.out.println("lista na ordem: ");
         lista.printLista();
 
-        lista.removeMiddle("Mike");
+        /*lista.removeStart();
         System.out.println("lista na ordem: ");
-        lista.printLista();
-
-        lista.removeStart();
-        System.out.println("lista na ordem: ");
-        lista.printLista();
+        lista.printLista();*/
                 
-        lista.removeEnd();
+        /*lista.removeEnd();
         System.out.println("lista na ordem: ");
-        lista.printLista();
+        lista.printLista();*/
 
         Fila fila = new Fila();
         fila.addFila("João Silva", "joaosilva@gmail.com.br", "1111", "123456", "Rua Espanha" );
@@ -113,8 +109,12 @@ public class Main {
         System.out.println("Fila: ");
         fila.printFila();
 
-        while(!fila.isEmpty()){
-            System.out.println("Removendo: " + fila.removeFila());
-        }
+        lista.removeMiddle("Mike");
+        System.out.println("pets disponíveis: ");
+        lista.printLista();
+
+
+        System.out.println("Removendo: " + fila.removeFila());
+        fila.printFila();
     }
 }

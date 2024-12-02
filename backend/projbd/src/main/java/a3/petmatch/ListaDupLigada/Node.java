@@ -20,17 +20,6 @@ public class Node {
         prevNode = null;
     }
     
-    public Node(String nome, int idade, String especie, String raca, String perfil, String status, Node no){
-        this.nome = nome;
-        this.idade = idade;
-        this.especie = especie;
-        this.raca = raca;
-        this.perfil = perfil;
-        this.status = status;
-        this.nextNode = no;
-        this.prevNode = no;
-    }
-    
     public Node getNextNode(){
         return nextNode;
     }

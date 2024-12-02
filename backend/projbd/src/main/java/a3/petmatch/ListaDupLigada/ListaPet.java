@@ -1,5 +1,4 @@
 package a3.petmatch.ListaDupLigada;
-//import ListaDupLigada.Node;
 public class ListaPet {
     private Node firstNode;
     private Node lastNode;
@@ -38,7 +37,8 @@ public class ListaPet {
         }
     }
 
-    public boolean addMiddle(String key, String nomePet, int idadePet, String especiePet, String racaPet, String perfilTextPet, String statusPet) {
+    public boolean addMiddle(String key, 
+    String nomePet, int idadePet, String especiePet, String racaPet, String perfilTextPet, String statusPet) {
         Node atual = firstNode;
 
         if (atual == null) {
